@@ -1,65 +1,81 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import { Box, Container, Grid, Paper, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+  },
+  typo: {
+    align: 'left'
+  }
+}))
 
 const BlogIndex = ({ data, location }) => {
+  const classes = useStyles();
+
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
+      <Grid container spacing={3}>
+        <Grid item xs = {12}>
+          <Paper>paper1</Paper>
+        </Grid>
+      </Grid>
     )
   }
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+    <Box>
+      {/*Header #s*/}
+      <Box>
+        <Container maxWidth="lg">
+          <Grid component={`header`} container spacing={0} justify={`center`} alignItems={`flex-start`}>
+            <Grid item xs={2}>
+              <Paper className={classes.paper}>menu</Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>title</Paper>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+      {/*Header #e*/}
+      {/*Body #s*/}
+      <Box m={3}>
+        <Container maxWidth="lg">
 
-          return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
-        })}
-      </ol>
-    </Layout>
+          {posts.map(post => {
+            const title = post.frontmatter.title || post.fields.slug
+
+            return (
+              <Link to={post.fields.slug}>
+                <Grid
+                  key={post.fields.slug}
+                  container spacing={3}
+                  direction={`column`}
+                  justify={`flex-start`}
+                  alignItems={`stretch`}>
+                  <Grid item xs>
+                    <Paper className={classes.paper}>
+                      <Typography align={`left`} variant={`h5`}>{title}</Typography>
+                      <Typography align={`left`}>{post.frontmatter.description || post.excerpt}</Typography>
+                      <Typography align={`left`} color={`textSecondary`}>{post.frontmatter.date }</Typography>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </Link>
+            )
+          })}
+        </Container>
+      </Box>
+      {/*Body #e*/}
+    </Box>
   )
 }
 
