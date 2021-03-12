@@ -1,6 +1,6 @@
 import * as React from "react"
+import { GetPagingPosts } from "../hooks/get-paging-posts"
 import { Link, graphql } from "gatsby"
-
 import { Box, Container, Grid, Paper, Typography, makeStyles } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 
@@ -14,11 +14,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+const {nodes} = GetPagingPosts()
+
 const BlogIndex = ({ data, location }) => {
   const classes = useStyles();
 
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+
 
   if (posts.length === 0) {
     return (
@@ -88,8 +91,8 @@ const BlogIndex = ({ data, location }) => {
         >
           <Pagination count={10}
                       onChange={(event, pageNum) => console.log(pageNum)}
-
-          />
+          >
+          </Pagination>
         </Box>
         {/*Page Bar#e*/}
       </Container>
