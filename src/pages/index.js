@@ -1,17 +1,17 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import { Box, Container, Grid, Paper, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
+import { Box, Container, Grid, Paper, Typography, makeStyles } from '@material-ui/core';
+import { Pagination } from '@material-ui/lab';
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
   },
-  typo: {
-    align: 'left'
-  }
+  link: {
+    'text-decoration': 'none'
+  },
 }))
 
 const BlogIndex = ({ data, location }) => {
@@ -33,47 +33,66 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Box>
       {/*Header #s*/}
-      <Box>
-        <Container maxWidth="lg">
-          <Grid component={`header`} container spacing={0} justify={`center`} alignItems={`flex-start`}>
+      <Container maxWidth="lg">
+        <Box>
+          <Grid container
+                // component={`header`}
+                spacing={0}
+                justify={`center`}
+                alignItems={`flex-start`}
+          >
             <Grid item xs={2}>
-              <Paper className={classes.paper}>menu</Paper>
+              <Paper className={classes.paper}>
+                <Typography>menu</Typography>
+              </Paper>
             </Grid>
             <Grid item xs>
-              <Paper className={classes.paper}>title</Paper>
+              <Paper className={classes.paper}>
+                <Typography>title</Typography>
+              </Paper>
             </Grid>
           </Grid>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
       {/*Header #e*/}
       {/*Body #s*/}
-      <Box m={3}>
-        <Container maxWidth="lg">
+      <Container maxWidth="lg">
+        {/*Post List #s*/}
+        <Box paddingTop={10}>
+          <Grid container
+                spacing={3}
+                direction={`column`}
+          >
+            {posts.map(post => {
+              const title = post.frontmatter.title || post.fields.slug
 
-          {posts.map(post => {
-            const title = post.frontmatter.title || post.fields.slug
-
-            return (
-              <Link to={post.fields.slug}>
-                <Grid
-                  key={post.fields.slug}
-                  container spacing={3}
-                  direction={`column`}
-                  justify={`flex-start`}
-                  alignItems={`stretch`}>
-                  <Grid item xs>
-                    <Paper className={classes.paper}>
-                      <Typography align={`left`} variant={`h5`}>{title}</Typography>
-                      <Typography align={`left`}>{post.frontmatter.description || post.excerpt}</Typography>
-                      <Typography align={`left`} color={`textSecondary`}>{post.frontmatter.date }</Typography>
+              return (
+                <Grid item key={post.fields.slug}>
+                  <Link to={post.fields.slug} className={classes.link}>
+                    <Paper className={classes.paper} variant={`outlined`}>
+                      <Typography variant={`h5`}>{title}</Typography>
+                      <Typography>{post.frontmatter.description || post.excerpt}</Typography>
+                      <Typography color={`textSecondary`}>{post.frontmatter.date }</Typography>
                     </Paper>
-                  </Grid>
+                  </Link>
                 </Grid>
-              </Link>
-            )
-          })}
-        </Container>
-      </Box>
+              )
+            })}
+          </Grid>
+        </Box>
+        {/*Post List #e*/}
+        {/*Page Bar#s*/}
+        <Box paddingTop={5}
+             display={`flex`}
+             justifyContent={`center`}
+        >
+          <Pagination count={10}
+                      onChange={(event, pageNum) => console.log(pageNum)}
+
+          />
+        </Box>
+        {/*Page Bar#e*/}
+      </Container>
       {/*Body #e*/}
     </Box>
   )
@@ -88,7 +107,9 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      ) {
       nodes {
         excerpt
         fields {
