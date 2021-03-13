@@ -1,8 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-
 import { Box, Container, Grid, Paper, Typography, makeStyles } from '@material-ui/core';
-import { Pagination, PaginationItem } from '@material-ui/lab';
+import {Pagination, PaginationItem} from '@material-ui/lab'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -14,12 +13,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const BlogIndex = ({ data, location }) => {
+const BlogHome = ({ data, location }) => {
   const classes = useStyles();
 
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-
+  const currentPage = data.allMarkdownRemark.pageInfo.currentPage
 
 
   if (posts.length === 0) {
@@ -38,7 +36,7 @@ const BlogIndex = ({ data, location }) => {
       <Container maxWidth="lg">
         <Box>
           <Grid container
-                // component={`header`}
+            // component={`header`}
                 spacing={0}
                 justify={`center`}
                 alignItems={`flex-start`}
@@ -71,7 +69,6 @@ const BlogIndex = ({ data, location }) => {
               return (
                 <Grid item key={post.fields.slug}>
                   <Link to={post.fields.slug} className={classes.link}>
-                  {/*<Link to={post.fields.slug} className={classes.link}>*/}
                     <Paper className={classes.paper} variant={`outlined`}>
                       <Typography variant={`h5`}>{title}</Typography>
                       <Typography>{post.frontmatter.description || post.excerpt}</Typography>
@@ -89,7 +86,7 @@ const BlogIndex = ({ data, location }) => {
              display={`flex`}
              justifyContent={`center`}
         >
-          <Pagination count={10} renderItem={(item) => (
+          <Pagination page={currentPage} count={10} renderItem={(item) => (
             <PaginationItem component={Link}
                             to={`${item.page === 1 ? '/' : `/page/${item.page}`}`}
                             {...item}
@@ -103,10 +100,10 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default BlogHome
 
 export const pageQuery = graphql`
-  query {
+  query PagingQuery($skip: Int){
     site {
       siteMetadata {
         title
@@ -115,6 +112,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: 5
+      skip: $skip
       ) {
       nodes {
         excerpt
@@ -126,6 +124,9 @@ export const pageQuery = graphql`
           title
           description
         }
+      }
+      pageInfo {
+        currentPage
       }
     }
   }
