@@ -1,16 +1,10 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// 페이징 화면 생성
-// exports.createPages = async ({ graphql, actions, reporter }) => {
-//   const { createPage } = actions
-//
-// }
-
-// 각 글에 해당되는 페이지 생성
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-
+/*
+* 각 포스트의 내용을 보여주는 페이지 생성
+* */
+const makeBlogIndex = async (graphql, createPage, reporter) => {
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
 
@@ -63,27 +57,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
+}
 
+/*
+* 블로그 포스트 리스트 페이지 생성
+* */
+const makeBlogHome = async (graphql, createPage, reporter) => {
   const blogHome = path.resolve('./src/templates/blog-home.js')
-
-
-  /*
-  *
-  * 전체 페이지 갯수 만큼 구하고
-  *
-  * 페이지들을 리밋만큼 쪼개고
-  *
-  * 그것들을 합쳐서 페이지를 만든다
-  *
-  * 1) 전체 페이지 갯수
-  *   전체 페이지 갯수만큼 반복문을 사용해서 createPage 를 실행한다.
-  *   blog-home 에서 index 를 받아서 graphql 의 skip 의 인자로 사용해 페이지를 만든다.
-  *
-  * */
-
-  const result2 = await graphql(
+  const result = await graphql(
     `
     query TotalCountQuery {
+      site {
+        siteMetadata {
+          variable {
+            pageScale
+          }
+        }
+      }
       allMarkdownRemark {
         totalCount
       }
@@ -91,26 +81,47 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   )
 
-  if (result2.errors) {
+  if (result.errors) {
     reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      result2.errors
+      `There was an error loading your blog home`,
+      result.errors
     )
     return
   }
 
-  const totalCnt = result2.data.allMarkdownRemark.totalCount
+  const totalCnt = result.data.allMarkdownRemark.totalCount
+  const siteVariable = result.data.site.siteMetadata.variable
+  const endPageNum = Math.ceil(totalCnt / siteVariable.pageScale);
 
-  for (let i = 2; i <= Math.ceil(totalCnt/5); i++) {
+  for (let i = 2; i <= endPageNum; i++) {
     createPage({
-
       path: `/page/${i}/`,
       component: blogHome,
       context: {
-        skip: (i - 1) * 5
+        skip: (i - 1) * siteVariable.pageScale,
+        endPageNum: endPageNum
       }
     })
   }
+}
+
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
+
+  await makeBlogIndex(graphql, createPage, reporter).catch(reason => {
+    reporter.panicOnBuild(
+      `Error ]makeBlogIndex[`,
+      reason
+    )
+  })
+
+  await makeBlogHome(graphql, createPage, reporter).catch(reason => {
+    reporter.panicOnBuild(
+      `Error ]makeBlogHome[`,
+      reason
+    )
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

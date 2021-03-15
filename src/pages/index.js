@@ -1,9 +1,12 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
+import { Box, Grid, Paper, makeStyles, CssBaseline } from '@material-ui/core';
 
-import { Box, Container, Grid, Paper, Typography, makeStyles } from '@material-ui/core';
-import { Pagination, PaginationItem } from '@material-ui/lab';
+import TitleBar from "../components/title-bar"
+import MainList from "../components/main-list"
+import MenuLeft from "../components/menu-left"
 
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -11,6 +14,65 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     'text-decoration': 'none'
+  },
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  hide: {
+    display: 'none',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+  },
+  drawerOpen: {
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9) + 1,
+    },
+  },
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
   },
 }))
 
@@ -20,9 +82,8 @@ const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
-
-
   if (posts.length === 0) {
+    // todo Error 페이지
     return (
       <Grid container spacing={3}>
         <Grid item xs = {12}>
@@ -33,72 +94,25 @@ const BlogIndex = ({ data, location }) => {
   }
 
   return (
-    <Box>
-      {/*Header #s*/}
-      <Container maxWidth="lg">
-        <Box>
-          <Grid container
-                // component={`header`}
-                spacing={0}
-                justify={`center`}
-                alignItems={`flex-start`}
-          >
-            <Grid item xs={2}>
-              <Paper className={classes.paper}>
-                <Typography>menu</Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}>
-                <Typography>title</Typography>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-      {/*Header #e*/}
-      {/*Body #s*/}
-      <Container maxWidth="lg">
-        {/*Post List #s*/}
-        <Box paddingTop={10}>
-          <Grid container
-                spacing={3}
-                direction={`column`}
-          >
-            {posts.map(post => {
-              const title = post.frontmatter.title || post.fields.slug
-
-              return (
-                <Grid item key={post.fields.slug}>
-                  <Link to={post.fields.slug} className={classes.link}>
-                  {/*<Link to={post.fields.slug} className={classes.link}>*/}
-                    <Paper className={classes.paper} variant={`outlined`}>
-                      <Typography variant={`h5`}>{title}</Typography>
-                      <Typography>{post.frontmatter.description || post.excerpt}</Typography>
-                      <Typography color={`textSecondary`}>{post.frontmatter.date }</Typography>
-                    </Paper>
-                  </Link>
-                </Grid>
-              )
-            })}
-          </Grid>
-        </Box>
-        {/*Post List #e*/}
-        {/*Page Bar#s*/}
-        <Box paddingTop={5}
-             display={`flex`}
-             justifyContent={`center`}
-        >
-          <Pagination count={10} renderItem={(item) => (
-            <PaginationItem component={Link}
-                            to={`${item.page === 1 ? '/' : `/page/${item.page}`}`}
-                            {...item}
-            />
-          )}/>
-        </Box>
-        {/*Page Bar#e*/}
-      </Container>
-      {/*Body #e*/}
+    <Box display={`flex`}>
+      <CssBaseline />
+      {/*Left Menu #s*/}
+      <MenuLeft classes={classes} />
+      {/*Left Menu #e*/}
+      {/*Main #s*/}
+      <Box width={`100%`}>
+        {/*Header #s*/}
+        <TitleBar siteTitle={siteTitle}
+                classes={classes}
+        />
+        {/*Header #e*/}
+        {/*Body #s*/}
+        <MainList classes={classes}
+                  data={data}
+        />
+        {/*Body #e*/}
+      </Box>
+      {/*Main #e*/}
     </Box>
   )
 }
@@ -110,11 +124,14 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        variable {
+          pageScale
+        }
       }
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 5
+      limit: 15
       ) {
       nodes {
         excerpt
@@ -127,6 +144,10 @@ export const pageQuery = graphql`
           description
         }
       }
+      pageInfo {
+        currentPage
+      }
+      totalCount
     }
   }
 `
