@@ -2,9 +2,8 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { Box, Grid, Paper, makeStyles, CssBaseline } from '@material-ui/core';
 
-import TitleBar from "../components/title-bar"
 import MainList from "../components/main-list"
-import MenuLeft from "../components/menu-left"
+import MenuBar from "../components/menu-bar"
 
 const drawerWidth = 240;
 
@@ -24,6 +23,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    borderBottom: `1px solid rgba(0, 0, 0, 0.12)`,
+    boxShadow: `none`
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -79,7 +80,6 @@ const useStyles = makeStyles((theme) => ({
 const BlogIndex = ({ data, location }) => {
   const classes = useStyles();
 
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
@@ -97,21 +97,17 @@ const BlogIndex = ({ data, location }) => {
     <Box display={`flex`}>
       <CssBaseline />
       {/*Left Menu #s*/}
-      <MenuLeft classes={classes} />
+      <MenuBar classes={classes}
+               data={data}
+      />
       {/*Left Menu #e*/}
       {/*Main #s*/}
-      <Box width={`100%`}>
-        {/*Header #s*/}
-        <TitleBar siteTitle={siteTitle}
-                classes={classes}
-        />
-        {/*Header #e*/}
-        {/*Body #s*/}
-        <MainList classes={classes}
-                  data={data}
-        />
-        {/*Body #e*/}
-      </Box>
+      <MainList classes={classes}
+                data={data}
+      />
+      {/*Footer #s*/}
+
+      {/*Footer #e*/}
       {/*Main #e*/}
     </Box>
   )
@@ -143,9 +139,6 @@ export const pageQuery = graphql`
           title
           description
         }
-      }
-      pageInfo {
-        currentPage
       }
       totalCount
     }

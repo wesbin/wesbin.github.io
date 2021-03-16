@@ -35,7 +35,8 @@
     "react-helmet": "^6.1.0",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",
-    "clsx": "latest"
+    "clsx": "latest",
+    "prop-types": "latest"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",

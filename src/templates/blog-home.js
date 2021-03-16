@@ -2,9 +2,8 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import {Box, Grid, Paper, makeStyles, CssBaseline} from '@material-ui/core'
 
-import TitleBar from "../components/title-bar"
 import MainList from "../components/main-list"
-import MenuLeft from "../components/menu-left"
+import MenuBar from "../components/menu-bar"
 
 const drawerWidth = 240;
 
@@ -24,6 +23,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    borderBottom: `1px solid rgba(0, 0, 0, 0.12)`,
+    boxShadow: `none`
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -76,12 +77,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const BlogHome = ({ data, location }) => {
+const BlogHome = ({ data, location, pageContext }) => {
   const classes = useStyles();
 
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-
 
   if (posts.length === 0) {
     // todo Error 페이지
@@ -98,21 +97,15 @@ const BlogHome = ({ data, location }) => {
     <Box display={`flex`}>
       <CssBaseline />
       {/*Left Menu #s*/}
-      <MenuLeft classes={classes} />
+      <MenuBar classes={classes}
+               data={data}
+      />
       {/*Left Menu #e*/}
       {/*Main #s*/}
-      <Box width={`100%`}>
-        {/*Header #s*/}
-        <TitleBar siteTitle={siteTitle}
-                  classes={classes}
-        />
-        {/*Header #e*/}
-        {/*Body #s*/}
-        <MainList classes={classes}
-                  data={data}
-        />
-        {/*Body #e*/}
-      </Box>
+      <MainList classes={classes}
+                data={data}
+                pageContext={pageContext}
+      />
       {/*Main #e*/}
     </Box>
   )
@@ -121,7 +114,10 @@ const BlogHome = ({ data, location }) => {
 export default BlogHome
 
 export const pageQuery = graphql`
-  query PagingQuery($skip: Int){
+  query PagingQuery(
+    $skip: Int
+    $pageScale: Int
+    ){
     site {
       siteMetadata {
         title
@@ -132,7 +128,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 5
+      limit: $pageScale
       skip: $skip
       ) {
       nodes {
@@ -145,9 +141,6 @@ export const pageQuery = graphql`
           title
           description
         }
-      }
-      pageInfo {
-        currentPage
       }
       totalCount
     }

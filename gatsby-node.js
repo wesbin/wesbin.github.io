@@ -99,7 +99,8 @@ const makeBlogHome = async (graphql, createPage, reporter) => {
       component: blogHome,
       context: {
         skip: (i - 1) * siteVariable.pageScale,
-        endPageNum: endPageNum
+        currentPage: i,
+        pageScale: siteVariable.pageScale
       }
     })
   }
