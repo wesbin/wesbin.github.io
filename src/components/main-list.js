@@ -14,13 +14,16 @@ import {
 } from "@material-ui/core"
 import {Link} from "gatsby"
 import {Pagination, PaginationItem} from "@material-ui/lab"
+import useStyles from "../hooks/styles"
+
 
 function ListItemLink(props) {
   return <ListItem button component={`a`} {...props} />
 }
 
-const MainList = ({ classes, data, pageContext }) => {
+const MainList = ({ data, pageContext }) => {
 
+  const classes = useStyles()
   const posts = data.allMarkdownRemark.nodes
   const totalCount = data.allMarkdownRemark.totalCount
   const siteVariable = data.site.siteMetadata.variable

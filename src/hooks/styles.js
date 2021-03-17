@@ -1,11 +1,3 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import {Box, CssBaseline, Grid} from '@material-ui/core'
-import Container from "@material-ui/core/Container"
-import Typography from "@material-ui/core/Typography"
-import MenuBar from "../components/menu-bar"
-import Paper from "@material-ui/core/Paper"
-
 import {makeStyles} from "@material-ui/core"
 
 const drawerWidth = 240;
@@ -80,60 +72,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const BlogAbout = ({ data, location }) => {
-
-  const classes = useStyles()
-
-  return (
-    <Box display={`flex`}>
-      <CssBaseline />
-      {/*Left Menu #s*/}
-      <MenuBar data={data}
-      />
-      {/*Left Menu #e*/}
-      <Box width={`100%`}>
-        <Container maxWidth={`lg`}>
-          <Box paddingTop={10}>
-            <Grid container
-                  spacing={3}
-            >
-              <Grid contaner
-                    item
-                    xs={12}
-                    spacing={3}
-                    direction={`column`}
-              >
-                <Grid item
-                >
-                  <Paper className={classes.paper}
-                         variant={`outlined`}
-                  >
-                    <Typography variant={`h5`}>Test</Typography>
-                  </Paper>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Box>
-        </Container>
-      </Box>
-    </Box>
-  )
-}
-
-export default BlogAbout
-
-export const pageQuery = graphql`
-  query AboutQuery {
-    site {
-      siteMetadata {
-        title
-        author {
-          summary
-          name
-        }
-        description
-        siteUrl
-      }
-    }
-  }
-`
+export default useStyles

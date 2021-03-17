@@ -5,8 +5,8 @@ module.exports = {
       name: `wesbin`,
       summary: `just playing!`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `wesbin blog`,
+    siteUrl: `https://wesbin.github.io/`,
     social: {
       twitter: `kylemathews`,
     },
@@ -129,6 +129,20 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    `gatsby-plugin-material-ui`
+    `gatsby-plugin-material-ui`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://wesbin.github.io/`,
+        sitemap: `https://wesbin.github.io/sitemap.xml`,
+        policy: [
+          {
+            userAgent: `*`,
+            allow: `/`
+          }
+        ]
+      }
+    }
   ],
 }

@@ -18,9 +18,11 @@ import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import Box from "@material-ui/core/Box"
+import useStyles from "../hooks/styles"
 
-const MenuBar = ({ classes, data }) => {
+const MenuBar = ({  data }) => {
 
+  const classes = useStyles();
   const siteTitle = data.site.siteMetadata?.title || `wesbin`
   const [open, setOpen] = React.useState(false);
 
@@ -96,6 +98,8 @@ const MenuBar = ({ classes, data }) => {
           </ListItem>
           <ListItem button
                     key={`About`}
+                    component={`a`}
+                    href={`/about`}
           >
             <ListItemIcon>
               <EmojiPeopleIcon/>

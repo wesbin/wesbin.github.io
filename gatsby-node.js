@@ -106,23 +106,28 @@ const makeBlogHome = async (graphql, createPage, reporter) => {
   }
 }
 
+/*
+* About 페이지 생성
+* */
+const makeBlogAbout = async (graphql, createPage, reporter) => {
+  const blogAbout = path.resolve(`./src/templates/blog-about.js`)
+
+  createPage({
+    path: `/about`,
+    component: blogAbout,
+    context: {
+
+    }
+  })
+}
+
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  await makeBlogIndex(graphql, createPage, reporter).catch(reason => {
-    reporter.panicOnBuild(
-      `Error ]makeBlogIndex[`,
-      reason
-    )
-  })
-
-  await makeBlogHome(graphql, createPage, reporter).catch(reason => {
-    reporter.panicOnBuild(
-      `Error ]makeBlogHome[`,
-      reason
-    )
-  })
+  await makeBlogIndex(graphql, createPage, reporter)
+  await makeBlogAbout(graphql, createPage, reporter)
+  await makeBlogHome(graphql, createPage, reporter)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
