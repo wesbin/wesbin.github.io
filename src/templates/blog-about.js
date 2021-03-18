@@ -97,7 +97,7 @@ const BlogAbout = ({ data, location }) => {
             <Grid container
                   spacing={3}
             >
-              <Grid contaner
+              <Grid container
                     item
                     xs={12}
                     spacing={3}
