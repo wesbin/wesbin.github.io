@@ -15,6 +15,7 @@ import {
 import {Link} from "gatsby"
 import {Pagination, PaginationItem} from "@material-ui/lab"
 // import useStyles from "../hooks/styles"
+import GetCategory from "../hooks/GetCategory"
 
 const drawerWidth = 240;
 
@@ -99,6 +100,7 @@ const MainList = ({ data, pageContext }) => {
   const totalCount = data.allMarkdownRemark.totalCount
   const siteVariable = data.site.siteMetadata.variable
   const currentPage = pageContext ? pageContext.currentPage : 1
+  const categoryList = GetCategory();
 
   return (
     <Box width={`100%`}>
@@ -148,12 +150,15 @@ const MainList = ({ data, pageContext }) => {
                   />
                   <CardContent>
                     <List component={`nav`}>
-                      <ListItem button>
-                        <ListItemText primary={`Sample1`} />
-                      </ListItem>
-                      <ListItemLink href={`/page/2`}>
-                        <ListItemText primary={`Sample2`}/>
-                      </ListItemLink>
+                      {
+                        categoryList.map(category => {
+                          return (
+                            <ListItem button key={category.fieldValue}>
+                              <ListItemText primary={`${category.fieldValue}(${category.totalCount})`} />
+                            </ListItem>
+                          )
+                        })
+                      }
                     </List>
                   </CardContent>
                 </Card>

@@ -1,133 +1,16 @@
-const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-/*
-* 각 포스트의 내용을 보여주는 페이지 생성
-* */
-const makeBlogIndex = async (graphql, createPage, reporter) => {
-  // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-
-  // Get all markdown blog posts sorted by date
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
-          nodes {
-            id
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      result.errors
-    )
-    return
-  }
-
-  const posts = result.data.allMarkdownRemark.nodes
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-
-      createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
-    })
-  }
-}
-
-/*
-* 블로그 포스트 리스트 페이지 생성
-* */
-const makeBlogHome = async (graphql, createPage, reporter) => {
-  const blogHome = path.resolve('./src/templates/blog-home.js')
-  const result = await graphql(
-    `
-    query TotalCountQuery {
-      site {
-        siteMetadata {
-          variable {
-            pageScale
-          }
-        }
-      }
-      allMarkdownRemark {
-        totalCount
-      }
-    }
-    `
-  )
-
-  if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog home`,
-      result.errors
-    )
-    return
-  }
-
-  const totalCnt = result.data.allMarkdownRemark.totalCount
-  const siteVariable = result.data.site.siteMetadata.variable
-  const endPageNum = Math.ceil(totalCnt / siteVariable.pageScale);
-
-  for (let i = 2; i <= endPageNum; i++) {
-    createPage({
-      path: `/page/${i}/`,
-      component: blogHome,
-      context: {
-        skip: (i - 1) * siteVariable.pageScale,
-        currentPage: i,
-        pageScale: siteVariable.pageScale
-      }
-    })
-  }
-}
-
-/*
-* About 페이지 생성
-* */
-const makeBlogAbout = async (graphql, createPage, reporter) => {
-  const blogAbout = path.resolve(`./src/templates/blog-about.js`)
-
-  createPage({
-    path: `/about`,
-    component: blogAbout,
-    context: {
-
-    }
-  })
-}
+const BlogAbout = require('./static/node-create/create-about')
+const BlogIndex = require('./static/node-create/create-index')
+const BlogHome = require('./static/node-create/create-home')
 
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  await makeBlogIndex(graphql, createPage, reporter)
-  await makeBlogAbout(graphql, createPage, reporter)
-  await makeBlogHome(graphql, createPage, reporter)
+  await BlogIndex.make(graphql, createPage, reporter)
+  await BlogAbout.make(graphql, createPage, reporter)
+  await BlogHome.make(graphql, createPage, reporter)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -157,16 +40,11 @@ exports.createSchemaCustomization = ({ actions }) => {
     type SiteSiteMetadata {
       author: Author
       siteUrl: String
-      social: Social
     }
 
     type Author {
       name: String
       summary: String
-    }
-
-    type Social {
-      twitter: String
     }
 
     type MarkdownRemark implements Node {
@@ -178,6 +56,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
+      category: String
     }
 
     type Fields {

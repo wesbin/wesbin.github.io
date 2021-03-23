@@ -7,9 +7,6 @@ module.exports = {
     },
     description: `wesbin blog`,
     siteUrl: `https://wesbin.github.io/`,
-    social: {
-      twitter: `kylemathews`,
-    },
     variable: {
       pageScale: 15 // index 의 pageQuery limit 도 같이 변경해줘야 한다.
     },
