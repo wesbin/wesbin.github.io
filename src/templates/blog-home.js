@@ -24,7 +24,6 @@ const BlogHome = ({ data, location, pageContext }) => {
 
   return (
     <Box display={`flex`}>
-      <CssBaseline />
       {/*Left Menu #s*/}
       <MenuBar data={data}
       />

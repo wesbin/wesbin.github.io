@@ -25,7 +25,6 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Box display={`flex`}>
       <SEO title={"Home"}/>
-      <CssBaseline />
       {/*Left Menu #s*/}
       <MenuBar data={data}
       />
