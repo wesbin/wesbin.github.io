@@ -1,10 +1,9 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import {Box, Grid, Paper, CssBaseline} from '@material-ui/core'
+import {Box, Grid, Paper} from '@material-ui/core'
 
 import MainList from "../components/main-list"
 import MenuBar from "../components/menu-bar"
-import SEO from "../pages"
 
 const BlogHome = ({ data, location, pageContext }) => {
   console.log(`blog-home`)

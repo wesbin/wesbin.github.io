@@ -153,9 +153,15 @@ const MainList = ({ data, pageContext }) => {
                       {
                         categoryList.map(category => {
                           return (
-                            <ListItem button key={category.fieldValue}>
-                              <ListItemText primary={`${category.fieldValue}(${category.totalCount})`} />
-                            </ListItem>
+                            <Link to={`/${category.fieldValue}/1`} className={classes.link}>
+                              <ListItem button key={category.fieldValue}>
+                                <ListItemText primary={`${category.fieldValue}(${category.totalCount})`}
+                                              primaryTypographyProps={{
+                                                color: 'textPrimary'
+                                              }}
+                                />
+                              </ListItem>
+                            </Link>
                           )
                         })
                       }
@@ -188,4 +194,4 @@ const MainList = ({ data, pageContext }) => {
   )
 }
 
-export default MainList
+export default MainList;

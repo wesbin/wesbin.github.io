@@ -4,7 +4,7 @@ const path = require(`path`)
 * */
 const MakeBlogCategory = async (graphql, createPage, reporter) => {
   const blogCategory = path.resolve('./src/templates/blog-category.js')
-  const { data } = await graphql(
+  const result = await graphql(
     `
     query CategoryQuery {
       site {
@@ -32,7 +32,7 @@ const MakeBlogCategory = async (graphql, createPage, reporter) => {
     return
   }
 
-  const { site, allMarkdownRemark } = data;
+  const { site, allMarkdownRemark } = result.data;
 
   allMarkdownRemark.group.forEach(group => {
     const endPageNum = Math.ceil(group.totalCount / site.siteMetadata.variable.pageScale)
@@ -41,9 +41,10 @@ const MakeBlogCategory = async (graphql, createPage, reporter) => {
         path: `/${group.fieldValue}/${i}`,
         component: blogCategory,
         context: {
-          skip: ``,
+          skip: (i - 1) * site.siteMetadata.variable.pageScale,
           currentPage: i,
-          pageSacle: site.siteMetadata.variable.pageScale
+          pageScale: site.siteMetadata.variable.pageScale,
+          category: group.fieldValue
         }
       })
     }

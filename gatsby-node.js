@@ -3,6 +3,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 const BlogAbout = require('./static/node-create/create-about')
 const BlogIndex = require('./static/node-create/create-index')
 const BlogHome = require('./static/node-create/create-home')
+const BlogCategory = require('./static/node-create/create-category')
 
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -11,6 +12,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   await BlogIndex.make(graphql, createPage, reporter)
   await BlogAbout.make(graphql, createPage, reporter)
   await BlogHome.make(graphql, createPage, reporter)
+  await BlogCategory.make(graphql, createPage, reporter)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
