@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import {Box, CssBaseline, Grid} from '@material-ui/core'
+import {Box, Grid} from '@material-ui/core'
 import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
 import MenuBar from "../components/menu-bar"
@@ -13,6 +13,9 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
+  },
+  titlePaper: {
+    paddingTop: 40
   },
   link: {
     'text-decoration': 'none'
@@ -86,13 +89,12 @@ const BlogAbout = ({ data, location }) => {
 
   return (
     <Box display={`flex`}>
-      <CssBaseline />
       {/*Left Menu #s*/}
       <MenuBar data={data}
       />
       {/*Left Menu #e*/}
       <Box width={`100%`}>
-        <Container maxWidth={`lg`}>
+        <Container maxWidth={`md`}>
           <Box paddingTop={10}>
             <Grid container
                   spacing={3}
@@ -105,10 +107,11 @@ const BlogAbout = ({ data, location }) => {
               >
                 <Grid item
                 >
-                  <Paper className={classes.paper}
-                         variant={`outlined`}
+                  <Paper className={classes.titlePaper}
+                         elevation={0}
                   >
-                    <Typography variant={`h5`}>Test</Typography>
+                    <Typography variant={`h3`}>안녕하세요</Typography>
+                    <Typography variant={`h4`}>개발자 위성빈입니다.</Typography>
                   </Paper>
                 </Grid>
               </Grid>

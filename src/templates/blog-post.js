@@ -8,7 +8,6 @@ import Grid from "@material-ui/core/Grid"
 import SEO from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
-  console.log(`blog-post`)
   const post = data.markdownRemark
   // const siteTitle = data.site.siteMetadata?.title || `Title`
   // const { previous, next } = data
@@ -47,11 +46,22 @@ const BlogPostTemplate = ({ data, location }) => {
                   <hr />
                 </article>
               </Grid>
+              <Grid item>
+                <script src="https://utteranc.es/client.js"
+                        repo="wesbin/wesbin.github.io"
+                        issue-term="pathname"
+                        label="Comment"
+                        theme="github-light"
+                        crossOrigin="anonymous"
+                        async>
+                </script>
+              </Grid>
             </Grid>
           </Box>
         </Container>
         {/*Body #e*/}
       </Box>
+
       {/*Main #e*/}
     </Box>
   )
