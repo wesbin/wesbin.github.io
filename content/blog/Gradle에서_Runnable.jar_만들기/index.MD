@@ -1,8 +1,8 @@
 ---
 title: "Gradle에서 Runnable.jar 만들기"
 date: "2021-03-17T22:40:32.169Z"
-description: Gradle에서 Runnable.jar 만들기
-category: "gradle"
+description: "Gradle에서 Runnable.jar 만들기"
+category: "experience"
 ---
 
 Gradle을 이용해서 Runnable.jar를 만들기 위해선 설정이 필요합니다. 설정 없이 jar를 만들어보면 처음에는 Manifest가 없다고 할 겁니다! 
