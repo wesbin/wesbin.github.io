@@ -6,6 +6,7 @@ import Box from "@material-ui/core/Box"
 import Container from "@material-ui/core/Container"
 import Grid from "@material-ui/core/Grid"
 import SEO from "../components/seo"
+import Utterances from '../hooks/Utterances'
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -46,17 +47,8 @@ const BlogPostTemplate = ({ data, location }) => {
                   <hr />
                 </article>
               </Grid>
-              <Grid item>
-                <script src="https://utteranc.es/client.js"
-                        repo="wesbin/wesbin.github.io"
-                        issue-term="pathname"
-                        label="Comment"
-                        theme="github-light"
-                        crossOrigin="anonymous"
-                        async>
-                </script>
-              </Grid>
             </Grid>
+            <Utterances />
           </Box>
         </Container>
         {/*Body #e*/}
