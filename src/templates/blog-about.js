@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   titlePaper: {
-    paddingTop: 40
+    paddingTop: 80
   },
   link: {
     'text-decoration': 'none'
@@ -110,8 +110,13 @@ const BlogAbout = ({ data, location }) => {
                   <Paper className={classes.titlePaper}
                          elevation={0}
                   >
-                    <Typography variant={`h3`}>안녕하세요</Typography>
-                    <Typography variant={`h4`}>개발자 위성빈입니다.</Typography>
+                    <Typography variant={`h3`}>
+                      안녕하세요<br />
+                      개발자 위성빈입니다.
+                    </Typography>
+                    {/*<Typography variant={`h6`}>*/}
+                      {/*즐겁게 짠 코드 한줄이 누군가에게 즐거움을 안겨줄 때*/}
+                    {/*</Typography>*/}
                   </Paper>
                 </Grid>
               </Grid>
