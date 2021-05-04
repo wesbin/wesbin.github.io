@@ -102,15 +102,15 @@ const BlogAbout = ({ data, location }) => {
               <Grid container
                     item
                     xs={12}
-                    spacing={3}
                     direction={`column`}
               >
+                {/* Top #s */}
                 <Grid item
                 >
                   <Paper className={classes.titlePaper}
                          elevation={0}
-                  >
-                    <Typography variant={`h3`}>
+                         >
+                    <Typography variant={`h2`}>
                       안녕하세요<br />
                       개발자 위성빈입니다.
                     </Typography>
@@ -119,6 +119,23 @@ const BlogAbout = ({ data, location }) => {
                     {/*</Typography>*/}
                   </Paper>
                 </Grid>
+                {/* Top #e */}
+                {/* Body #s */}
+                <Grid container>
+                  <Typography variant={`h4`}>Projects</Typography>
+                  <Grid container>
+                    <Typography variant={'h6'}>what-eat</Typography>
+                    <Grid item>
+                      React, Node.js를 사용해 만든 메뉴 추천 사이트입니다.
+                      Github pages를 사용하여 배포하였고, 해당 Repository의 issues를 Github API를 사용하여 메뉴를 관리했습니다.
+                      또한 Github API 사용 중에 CORS 문제를 해결하기 위해 Azure의 App service를 이용하여 Proxy 서버를 구성하였습니다.
+                      <br/>
+                      <br/>
+                      추후에 모바일 기기의 편의성 향상을 위한 로그인 방식을 변경할 예정입니다. 또한 UI 개선의 가능성도 열어두고 있습니다.
+                    </Grid>
+                  </Grid>
+                </Grid>
+                {/* Body #e */}
               </Grid>
             </Grid>
           </Box>
