@@ -42,6 +42,7 @@ const MenuBar = ({ data }) => {
         >
           <Container maxWidth={`lg`}>
             <Grid container
+                  item
                   xs={12}
                   lg={8}
             >

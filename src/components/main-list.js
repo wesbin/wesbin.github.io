@@ -122,7 +122,7 @@ const MainList = ({ data, pageContext }) => {
 
                 return (
                   <Grid item key={post.fields.slug}>
-                    <Link to={post.fields.slug} className={classes.link}>
+                    <Link to={post.fields.slug} className={classes.link} key={post.fields.slug}>
                       {/*<Link to={post.fields.slug} className={classes.link}>*/}
                       <Paper className={classes.paper} variant={`outlined`}>
                         <Typography variant={`h5`}>{title}</Typography>
@@ -153,8 +153,8 @@ const MainList = ({ data, pageContext }) => {
                       {
                         categoryList.map(category => {
                           return (
-                            <Link to={`/${category.fieldValue}/1`} className={classes.link}>
-                              <ListItem button key={category.fieldValue}>
+                            <Link to={`/${category.fieldValue}/1`} className={classes.link} key={category.fieldValue}>
+                              <ListItem button>
                                 <ListItemText primary={`${category.fieldValue}(${category.totalCount})`}
                                               primaryTypographyProps={{
                                                 color: 'textPrimary'
@@ -182,10 +182,10 @@ const MainList = ({ data, pageContext }) => {
                       count={Math.ceil(totalCount / siteVariable.pageScale)}
                       renderItem={(item) => (
                         <PaginationItem component={Link}
-                                        to={`${item.page === 1 ? '/' : `/page/${item.page}`}`}
+                                        to={`/${item.page === 1 ? '' : `page/${item.page}`}`}
                                         {...item}
-                        />)
-                      }
+                        />
+                      )}
           />
         </Box>
         {/*Page Bar#e*/}
