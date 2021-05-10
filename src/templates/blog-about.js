@@ -21,16 +21,20 @@ const useStyles = makeStyles((theme) => ({
   subTitle: {
     fontWeight: 'bold',
   },
+  subBody: {
+    marginTop: theme.spacing(2)
+  },
   divider: {
     background: 'rgba(0, 0, 0, 0.87)',
     height: 2,
     marginTop: theme.spacing(2)
   },
-  subBody: {
-    marginTop: theme.spacing(2)
-  },
   projects: {
     marginTop: theme.spacing(2)
+  },
+  projectTitle: {
+    fontWeight: 'bold',
+    marginRight: theme.spacing(2)
   },
   projectsBody: {
     marginTop: theme.spacing(2)
@@ -97,15 +101,30 @@ const BlogAbout = ({ data, location }) => {
                         className={classes.subBody}>
                     <Grid container
                           className={classes.projects}>
-                      <Typography variant={'h6'}>what-eat</Typography>
+                      <Typography className={classes.projectTitle}
+                                  variant={'h5'}>
+                        what-eat
+                      </Typography>
+                      <Button href="https://github.com/wesbin/what-eat">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="" title="github">
+                          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                      </Button>
+                      <Button href="https://wesbin.github.io/what-eat/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" title="데모보기" className="">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                      </Button>
                       <Grid item
                             className={classes.projectsBody}>
-                        React, Node.js를 사용해 만든 메뉴 추천 사이트입니다.
-                        Github pages를 사용하여 배포하였고, 해당 Repository의 issues를 Github API를 사용하여 메뉴를 관리했습니다.
-                        또한 Github API 사용 중에 CORS 문제를 해결하기 위해 Azure의 App service를 이용하여 Proxy 서버를 구성하였습니다.
-                        <br/>
-                        <br/>
-                        추후에 모바일 기기의 편의성 향상을 위한 로그인 방식을 변경할 예정입니다. 또한 UI 개선의 가능성도 열어두고 있습니다.
+                        <Typography>
+                          React, Node.js를 사용해 만든 메뉴 추천 사이트입니다.
+                          Github pages를 사용하여 배포하였고, 해당 Repository의 issues를 Github API를 사용하여 메뉴를 관리했습니다.
+                          또한 Github API 사용 중에 CORS 문제를 해결하기 위해 Azure의 App service를 이용하여 Proxy 서버를 구성하였습니다.
+                          <br/>
+                          <br/>
+                          추후에 모바일 기기의 편의성 향상을 위한 로그인 방식을 변경할 예정입니다. 또한 UI 개선의 가능성도 열어두고 있습니다.
+                        </Typography>
                       </Grid>
                     </Grid>
                   </Grid>
