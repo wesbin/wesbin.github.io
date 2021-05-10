@@ -11,14 +11,8 @@ import Grid from "@material-ui/core/Grid"
 import {Link} from "gatsby"
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-  },
   link: {
     'text-decoration': 'none'
-  },
-  root: {
-    display: 'flex',
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
