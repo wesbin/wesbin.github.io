@@ -17,8 +17,6 @@ import {Pagination, PaginationItem} from "@material-ui/lab"
 // import useStyles from "../hooks/styles"
 import GetCategory from "../hooks/GetCategory"
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
@@ -27,10 +25,6 @@ const useStyles = makeStyles((theme) => ({
     'text-decoration': 'none'
   },
 }))
-
-function ListItemLink(props) {
-  return <ListItem button component={`a`} {...props} />
-}
 
 const MainList = ({ data, pageContext }) => {
 
