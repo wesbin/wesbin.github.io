@@ -31,9 +31,6 @@ const BlogIndex = ({ data, location }) => {
       {/*Main #s*/}
       <MainList data={data}
       />
-      {/*Footer #s*/}
-
-      {/*Footer #e*/}
       {/*Main #e*/}
     </Box>
   )

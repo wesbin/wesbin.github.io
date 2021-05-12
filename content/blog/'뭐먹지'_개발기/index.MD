@@ -10,4 +10,17 @@ category: "experience"
 
 ### '뭐먹지'?
 
- 
+메뉴를 선택하기 위해 여자친구와 하던 놀이가 '뭐먹지'의 시작이었습니다. 
+
+
+기획
+
+react
+
+Github Page
+
+route
+
+404
+
+
