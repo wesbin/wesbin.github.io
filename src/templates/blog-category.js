@@ -1,23 +1,40 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import {Box} from "@material-ui/core"
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import MainList from "../components/main-list"
 import MenuBar from "../components/menu-bar"
 
 const BlogCategory = ({ data, location, pageContext }) => {
+
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        "Apple SD Gothic Neo",
+        "Nanum Barun Gothic",
+        "Nanum Gothic",
+        "Verdana,Arial",
+        "Malgun Gothic",
+        "Dotum,sans-serif"
+      ].join(",")
+    }
+  })
+
   return (
-    <Box display={`flex`}>
-      {/*Left Menu #s*/}
-      <MenuBar data={data}
-      />
-      {/*Left Menu #e*/}
-      {/*Main #s*/}
-      <MainList data={data}
-                pageContext={pageContext}
-      />
-      {/*Main #e*/}
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box display={`flex`}>
+        {/*Left Menu #s*/}
+        <MenuBar data={data}
+        />
+        {/*Left Menu #e*/}
+        {/*Main #s*/}
+        <MainList data={data}
+                  pageContext={pageContext}
+        />
+        {/*Main #e*/}
+      </Box>
+    </ThemeProvider>
   )
 }
 

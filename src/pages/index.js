@@ -1,6 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Box, Grid, Paper } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import MainList from "../components/main-list"
 import MenuBar from "../components/menu-bar"
@@ -21,18 +22,33 @@ const BlogIndex = ({ data, location }) => {
     )
   }
 
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        "Apple SD Gothic Neo",
+        "Nanum Barun Gothic",
+        "Nanum Gothic",
+        "Verdana,Arial",
+        "Malgun Gothic",
+        "Dotum,sans-serif"
+      ].join(",")
+    }
+  })
+
   return (
-    <Box display={`flex`}>
-      <SEO title={"Home"}/>
-      {/*Left Menu #s*/}
-      <MenuBar data={data}
-      />
-      {/*Left Menu #e*/}
-      {/*Main #s*/}
-      <MainList data={data}
-      />
-      {/*Main #e*/}
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box display={`flex`}>
+        <SEO title={"Home"}/>
+        {/*Left Menu #s*/}
+        <MenuBar data={data}
+        />
+        {/*Left Menu #e*/}
+        {/*Main #s*/}
+        <MainList data={data}
+        />
+        {/*Main #e*/}
+      </Box>
+    </ThemeProvider>
   )
 }
 

@@ -79,7 +79,7 @@ const MainList = ({ data, pageContext }) => {
                     xs={12}
               >
                 <Card variant={`outlined`}>
-                  <CardHeader title={`Category`}
+                  <CardHeader title={`카테고리`}
                   />
                   <CardContent>
                     <List component={`nav`}>
@@ -88,7 +88,7 @@ const MainList = ({ data, pageContext }) => {
                           return (
                             <Link to={`/${category.fieldValue}/1`} className={classes.link} key={category.fieldValue}>
                               <ListItem button>
-                                <ListItemText primary={`${category.fieldValue}(${category.totalCount})`}
+                                <ListItemText primary={`${category.fieldValue} (${category.totalCount})`}
                                               primaryTypographyProps={{
                                                 color: 'textPrimary'
                                               }}
