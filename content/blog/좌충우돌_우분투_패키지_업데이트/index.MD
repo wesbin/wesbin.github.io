@@ -1,7 +1,7 @@
 ---
 title: "좌충우돌 우분투 패키지 업데이트"
 date: "2021-04-05 00:26:46"
-description: "좌충우돌 우분투 패키지 업데이트 & 우분투 패키지 크롤링"
+description: "좌충우돌 우분투 패키지 업데이트 & 우분투 패키지 스크래핑"
 category: "experience"
 ---
 
@@ -72,9 +72,9 @@ scp <source_path><username>@<ip>:<dest_path>
 ```
 
 scp를 이용한 파일 옮기기는 쉽게 성공했습니다. 하지만 부족한 부분을 다시 손을 다운로드 받긴 했지만 찝찝하더군요.
-그래서 우분투 패키지 사이트를 크롤링해서 의존이 필요한 패키지들 모두를 다운로드 받는 툴을 하나 만들기로 했습니다.
+그래서 우분투 패키지 사이트를 스크래핑해서 의존이 필요한 패키지들 모두를 다운로드 받는 툴을 하나 만들기로 했습니다.
 
-Node로 만든 이 툴([https://github.com/wesbin/ubuntu-package-crawling](https://github.com/wesbin/ubuntu-package-crawling))은 [https://packages.ubuntu.com/](https://packages.ubuntu.com/) 이곳에서 원하는 패키지가 의존하는 패키지를 재귀적으로 모두 다운로드 하게 됩니다.
+Node로 만든 이 툴([https://github.com/wesbin/ubuntu-package-scraping](https://github.com/wesbin/ubuntu-package-scraping))은 [https://packages.ubuntu.com/](https://packages.ubuntu.com/) 이곳에서 원하는 패키지가 의존하는 패키지를 재귀적으로 모두 다운로드 하게 됩니다.
 
 그렇게 만든 툴로 모든 패키지를 다운로드, scp로 업로드, apt 명령어를 사용하여 일괄 설치를 성공했습니다.
 
