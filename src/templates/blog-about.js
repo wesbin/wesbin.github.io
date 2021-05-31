@@ -156,7 +156,7 @@ const BlogAbout = ({ data, location }) => {
                             className={classes.projects}>
                         <Typography className={classes.projectTitle}
                                     variant={'h5'}>
-                          우분투 패키지 크롤링(ubuntu-package-scraping)
+                          우분투 패키지 스크래핑(ubuntu-package-scraping)
                         </Typography>
                         <Button href="https://github.com/wesbin/ubuntu-package-scraping" target="_blank" rel="noopener noreferrer">
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="" title="github">
