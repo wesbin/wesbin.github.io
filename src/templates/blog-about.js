@@ -166,7 +166,8 @@ const BlogAbout = ({ data, location }) => {
                         <Grid item
                               className={classes.projectsBody}>
                           <Typography>
-                            우분투 패키지를 반복해서 다운로드받아야 할 상황이 생겨 만든 툴입니다.
+                            오프라인으로 우분투 패키지를 업데이트하기 위해 만들었던 툴입니다.
+                            우분투 패키지 사이트(<a>https://packages.ubuntu.com/</a>)에서 원하는 패키지와 해당 패키지와 연관된 모든 depends를 다운받게 됩니다.
                             <br/>
                             <br/>
                             Node.js를 이용해 구현하였습니다.
