@@ -20,7 +20,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Gatsby Publish
         # You may pin to the exact commit or the version.
         # uses: enriikke/gatsby-gh-pages-action@fbe063b0cfaa8c16ec4e346cc3c48e9b154cce87
