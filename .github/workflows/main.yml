@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the blog branch
   push:
-    branches: [ master ]
+    branches: [ blog ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,7 +28,7 @@ jobs:
           # A personal access token needed to push your site after it has been built.
           access-token: ${{ secrets.GIT_TOKEN }}
           # The branch expected by GitHub to have the static files needed for your site.
-          deploy-branch: blog
+#           deploy-branch: # optional, default is master
           # The repo expected by GitHub to have the static files needed for your site.
 #           deploy-repo: # optional, default is 
           # Additional arguments that get passed to `gatsby build`.
