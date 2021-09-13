@@ -28,7 +28,7 @@ jobs:
           # A personal access token needed to push your site after it has been built.
           access-token: ${{ secrets.GIT_TOKEN }}
           # The branch expected by GitHub to have the static files needed for your site.
-#           deploy-branch: # optional, default is master
+          deploy-branch: blog
           # The repo expected by GitHub to have the static files needed for your site.
 #           deploy-repo: # optional, default is 
           # Additional arguments that get passed to `gatsby build`.
