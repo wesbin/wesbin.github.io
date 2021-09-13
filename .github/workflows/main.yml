@@ -27,10 +27,10 @@ jobs:
         with:
           # A personal access token needed to push your site after it has been built.
           access-token: ${{ secrets.GIT_TOKEN }}
-          # The branch expected by GitHub to have the static files needed for your site.
-          deploy-branch: blog
+#           The branch expected by GitHub to have the static files needed for your site.
+#           deploy-branch: blog
           # The repo expected by GitHub to have the static files needed for your site.
-#           deploy-repo: wesbin.github.io
+#           deploy-repo: # optional, default is 
           # Additional arguments that get passed to `gatsby build`.
 #           gatsby-args: # optional, default is 
           # Builds your Gatsby site but skips publishing by setting it to `true`. Helpful for testing/debugging Workflows.
@@ -43,35 +43,3 @@ jobs:
 #           git-config-name: # optional, default is 
           # The email adress under which the deploy commit is pushed to the deploy branch.
 #           git-config-email: # optional, default is 
-
-      - name: GitHub Pages
-        # You may pin to the exact commit or the version.
-        # uses: crazy-max/ghaction-github-pages@db4476a01402e1a7ce05f41832040eef16d14925
-        uses: crazy-max/ghaction-github-pages@v2.5.0
-        with:
-          # Git domain (default github.com)
-#           domain: # optional, default is github.com
-          # GitHub repository where assets will be deployed (default $GITHUB_REPOSITORY)
-          repo: wesbin.github.io
-          # Git branch where assets will be deployed
-          target_branch: master
-          # Create incremental commit instead of doing push force
-#           keep_history: # optional, default is false
-          # Allow an empty commit to be created
-#           allow_empty_commit: # optional, default is true
-          # Build directory to deploy
-          build_dir: /public
-          # The committer name and email address
-#           committer: # optional
-          # The author name and email address
-#           author: # optional
-          # Commit message
-#           commit_message: # optional
-          # Write the given domain name to the CNAME file
-#           fqdn: # optional
-          # Allow Jekyll to build your site
-#           jekyll: # optional, default is true
-          # If enabled, nothing will be pushed
-#           dry_run: # optional, default is false
-          # Enable verbose output
-#           verbose: # optional, default is false
