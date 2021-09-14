@@ -42,7 +42,7 @@ const BlogPostTemplate = ({ data, location }) => {
         {/*Main #s*/}
         <Box width={`100%`}>
           {/*Body #s*/}
-          <Container maxWidth={`lg`}>
+          <Container maxWidth={`md`}>
             <Box paddingTop={10}>
               <Grid container
               >

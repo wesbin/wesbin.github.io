@@ -32,7 +32,7 @@ const MenuBar = ({ data }) => {
       >
         <Toolbar
         >
-          <Container maxWidth={`lg`}>
+          <Container maxWidth={`md`}>
             <Grid container
                   item
                   xs={12}

@@ -37,7 +37,7 @@ const MainList = ({ data, pageContext }) => {
 
   return (
     <Box width={`100%`}>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Box paddingTop={10}>
           <Grid container
                 spacing={3}
