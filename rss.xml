@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[wesbin]]></title><description><![CDATA[wesbin blog]]></description><link>https://wesbin.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 14 Sep 2021 08:50:03 GMT</lastBuildDate><item><title><![CDATA['뭐먹지' 개발기]]></title><description><![CDATA[아이디어나 기획은 작년에 해놨지만 1년이 지난 지금에서야 완성한 첫 토이 프로젝트 뭐먹지(what-eat…]]></description><link>https://wesbin.github.io/&apos;뭐먹지&apos;_개발기/&apos;뭐먹지&apos;_개발기/</link><guid isPermaLink="false">https://wesbin.github.io/&apos;뭐먹지&apos;_개발기/&apos;뭐먹지&apos;_개발기/</guid><pubDate>Thu, 27 May 2021 00:26:46 GMT</pubDate><content:encoded>&lt;p&gt;아이디어나 기획은 작년에 해놨지만 1년이 지난 지금에서야 완성한 첫 토이 프로젝트 뭐먹지(what-eat). ‘뭐먹지’를 개발하며 겪었던 이야기를 공유하려 합니다.&lt;/p&gt;
+&lt;h3&gt;뭐먹지?&lt;/h3&gt;
+&lt;p&gt;점심과 저녁 메뉴를 선뜻 고르지 못하고 하던 작은 미니게임이 있었습니다. 한식, 중식, 양식, 일식, 분식 중 오늘은 먹고 싶지 않은 카테고리를 빼고 남은 카테고리에서 메뉴를 고르는 방식의 게임이었죠.&lt;/p&gt;
+&lt;p&gt;‘뭐먹지’는 그 게임을 고스란히 인터넷으로 옮겨놓은 프로젝트입니다.&lt;/p&gt;
+&lt;h3&gt;실패&lt;/h3&gt;
+&lt;p&gt;사실 뭐먹지는 이미 몇번이고 제 repository에 이런 저런 형태와 이름으로 만들어졌다가 사라졌습니다. 그 잔재가 남아있기도 하죠. (&lt;a href=&quot;https://github.com/wesbin/what-eat/releases/tag/v20210317&quot;&gt;https://github.com/wesbin/what-eat/releases/tag/v20210317&lt;/a&gt;) 다시 생각해도 이 버전은 참 맘에 들지 않습니다.&lt;/p&gt;
+&lt;p&gt;다행히 저는 여기서 멈출 이유는 없었습니다. 저는 ‘실패’를 성공의 어머니로 만들기 위해 이유를 한번 찾아보기로 합니다.&lt;/p&gt;
+&lt;h3&gt;실패의 이유&lt;/h3&gt;
+&lt;p&gt;결론은 이렇습니다. &lt;strong&gt;디테일한 계획(혹은 기획)의 부족.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;실패했던 프로젝트들을 돌이켜 보면 저는 “그건 그렇게 하고, 저건 그렇게 만들면 되겠지”라며 프로젝트를 시작했습니다. 그저 머릿 속으로 생각한 목업(Mock-up) 수준의 것을 구현하려 했던 것이죠. 지금 생각하면 그 결과는 뻔한 것이었죠.&lt;/p&gt;
+&lt;h3&gt;다시 뭐먹지&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/220be7076e2c9f1c5857e0f7e9e283db/e5166/plan1.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 135.44303797468356%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHuEKCTYIyH/8QAGBAAAgMAAAAAAAAAAAAAAAAAEEEAESD/2gAIAQEAAQUCiCzQ/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFRABAQAAAAAAAAAAAAAAAAAAIBH/2gAIAQEABj8CcP8A/8QAGxAAAgIDAQAAAAAAAAAAAAAAAAERMRBRcfD/2gAIAQEAAT8hiuCFM1wXjHbHKVoTc0IGpIax/9oADAMBAAIAAwAAABCzzjD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAeEAEAAwACAgMAAAAAAAAAAAABABEhQXExgRBRYf/aAAgBAQABPxAHE3k9QC3znlxjoGTudvUpy1+m/G10aKLazuN0QVbd17m1Vu/yBh8R5w3u7AAown//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;plan1&quot;
+        title=&quot;plan1&quot;
+        src=&quot;/static/220be7076e2c9f1c5857e0f7e9e283db/828fb/plan1.jpg&quot;
+        srcset=&quot;/static/220be7076e2c9f1c5857e0f7e9e283db/ff44c/plan1.jpg 158w,
+/static/220be7076e2c9f1c5857e0f7e9e283db/a6688/plan1.jpg 315w,
+/static/220be7076e2c9f1c5857e0f7e9e283db/828fb/plan1.jpg 630w,
+/static/220be7076e2c9f1c5857e0f7e9e283db/0ede0/plan1.jpg 945w,
+/static/220be7076e2c9f1c5857e0f7e9e283db/e5166/plan1.jpg 1200w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5b888a7e435a3804ee60e9fff158f0e5/e5166/plan2.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 125.9493670886076%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAZABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIBAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAH2s0UCHXSVD//EABUQAQEAAAAAAAAAAAAAAAAAACAB/9oACAEBAAEFAlV//8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwJP/8QAHBAAAgMAAwEAAAAAAAAAAAAAAAERIUExUXEQ/9oACAEBAAE/IXkHJo886E1XvQ+SrtolTCkSmzfv/9oADAMBAAIAAwAAABDwwTD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAeEAEAAwEAAQUAAAAAAAAAAAABABEhMUEQUWFx8P/aAAgBAQABPxA0YChqRaUDdhob9TiAr4I92GO2jGja9FMnX94lyEUZh4lVF0+K7AGlv3Kh6//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;plan2&quot;
+        title=&quot;plan2&quot;
+        src=&quot;/static/5b888a7e435a3804ee60e9fff158f0e5/828fb/plan2.jpg&quot;
+        srcset=&quot;/static/5b888a7e435a3804ee60e9fff158f0e5/ff44c/plan2.jpg 158w,
+/static/5b888a7e435a3804ee60e9fff158f0e5/a6688/plan2.jpg 315w,
+/static/5b888a7e435a3804ee60e9fff158f0e5/828fb/plan2.jpg 630w,
+/static/5b888a7e435a3804ee60e9fff158f0e5/0ede0/plan2.jpg 945w,
+/static/5b888a7e435a3804ee60e9fff158f0e5/e5166/plan2.jpg 1200w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/71f479aa46cb7350ce5e6b70166f78b1/e5166/plan3.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 48.734177215189874%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHaEvIGD//EABgQAQEAAwAAAAAAAAAAAAAAAAEAEBEz/9oACAEBAAEFAltsT0x//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAHBABAAMAAgMAAAAAAAAAAAAAAQARIRAxQWHB/9oACAEBAAE/IaM1r3Cqg+xL3k1TxUAOgOP/2gAMAwEAAgADAAAAECMP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHhABAAICAQUAAAAAAAAAAAAAAREhADGREEFRcaH/2gAIAQEAAT8Q0iisLfD1hbBNyqnjxhSnaqiucSiZ7DrB9huCOn//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;plan3&quot;
+        title=&quot;plan3&quot;
+        src=&quot;/static/71f479aa46cb7350ce5e6b70166f78b1/828fb/plan3.jpg&quot;
+        srcset=&quot;/static/71f479aa46cb7350ce5e6b70166f78b1/ff44c/plan3.jpg 158w,
+/static/71f479aa46cb7350ce5e6b70166f78b1/a6688/plan3.jpg 315w,
+/static/71f479aa46cb7350ce5e6b70166f78b1/828fb/plan3.jpg 630w,
+/static/71f479aa46cb7350ce5e6b70166f78b1/0ede0/plan3.jpg 945w,
+/static/71f479aa46cb7350ce5e6b70166f78b1/e5166/plan3.jpg 1200w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;정말 별거 없는 기획서입니다. &lt;del&gt;혼자 볼땐 몰랐는데 올려서 보니 글씨 정말 안 이쁘네&lt;/del&gt; 갤럭시 탭에 머릿 속에 있던 내용을 꺼내놓으면서 배포나 구현을 어떤 식으로 할 것인지 조사하고 메모해둔 수준이죠. 그 와중에 중간에 3번 정돈 조금씩 내용이 바뀌기도 했습니다. 하지만 그런 기획서이지만 없는 것과 있는 것의 차이는 엄청 났습니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;‘뭐먹지’가 완성이 되었으니까요!!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;완성된 ‘뭐먹지’는 &lt;a href=&quot;https://wesbin.github.io/what-eat/&quot;&gt;https://wesbin.github.io/what-eat/&lt;/a&gt; 에서 체험하실수 있으십니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;앞에서는 ‘뭐먹지’가 어떻게 시작되었는지 얘기했었습니다. 여기서부터는 ‘뭐먹지’를 실제로 개발하면서 겪었던 일들에 대해 얘기하려 합니다.&lt;/p&gt;
+&lt;p&gt;프로젝트를 진행하면서 정말 다양한 장애물들이 있었습니다. React.js에 대한 생소함, Github Pages를 이용한 배포. 지금 생각하면 프로젝트를 진행하면서 했던 모든 작업들이 수월하게 진행이 되었던 적이 없었던거 같네요.&lt;/p&gt;
+&lt;p&gt;그런 장애물들 중에서도 가장 높았던 장애물인 Github API 그리고 Proxy를 중심으로 이 글을 작성하고자 합니다. 우선 제가 Github API를 사용했던 이유를 말씀드려야 할것 같습니다.&lt;/p&gt;
+&lt;h3&gt;Why?&lt;/h3&gt;
+&lt;p&gt;‘뭐먹지’는 Github가 제공하는 서비스 중 하나인 Github Pages(&lt;a href=&quot;https://pages.github.com/&quot;&gt;https://pages.github.com/&lt;/a&gt;)를 이용하여 배포를 진행했습니다. Github에 업로드된 소스를 이용하여 배포를 도와주는 서비스입니다. 특징이 있다면 Server-side 코드를 실행하지 않는다는 점입니다. 오직 업로드된 정적인 파일들을 읽어내죠.&lt;/p&gt;
+&lt;p&gt;‘뭐먹지’에서는 추첨에 사용될 메뉴들이 저장될 곳이 필요했습니다. DB 같은 것도 물론 좋지만 간단하게 JSON 파일이라도 필요했습니다. 하지만 위에서 말씀드린 Github pages의 특징 때문에 DB도 JSON 파일도 이용할수 없었습니다.
+그때 눈에 띈게 Github API를 이용하여 Repository의 issue 기능을 이용한 댓글 서비스였습니다. &lt;del&gt;이때 그냥 Cloud 서비스를 이용하겠다고 선택했으면 이 고생을 안 했을수도…&lt;/del&gt; 그리고 저는 Github API를 이용하여 이슈를 댓글로서가 아닌 메뉴로서 활용할 생각을 하게 됩니다.&lt;/p&gt;
+&lt;h3&gt;Github API&lt;/h3&gt;
+&lt;p&gt;Github API(&lt;a href=&quot;https://docs.github.com/en/rest&quot;&gt;https://docs.github.com/en/rest&lt;/a&gt;)는 정말 많은 기능들이 있습니다. 이 기능을 활용하여 생각보다 많은 사람들이 저마다의 툴을 만들어 사용하고 있습니다. &lt;del&gt;저도 나름 그렇게 됐구요.&lt;/del&gt;
+그 중에서 저는 issue를 가져와 읽고, 쓰는 기능이 필요했습니다. 이건 정말 생각보다 쉬웠습니다. &lt;del&gt;지금보니 있네요. 수월하게 풀린 부분이&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;Github API를 사용하는 방법은 간단합니다. 공식 문서에서 URL을 확인하고 &lt;del&gt;적당히 날려주면 끝!&lt;/del&gt; 아래와 같이 요청해주시면 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/da545506edff90327411e63575ead324/c2d13/github_api.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.32911392405063%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAABJ0AAASdAHeZh94AAAAyklEQVQoz5WSSXYDIQwFuUhikMTUSECnh8Te2fc/VNSOF37eBNeClep9DZhpynNvzExEzjn7BNyxL2gRkufFycUIP4gp0QBB8Uj8hfVikLDUtjc+17JyTuHI/x97AvthAFTuveQcKBAhwpDstAyMPlna1ttSUolBbTeMyjbX+bxvt7Vd1y453ncyKANM0mKMHuHIBXgjGRF5XnVkvcLnyY7HPuRJehfhGHLw/q2ZVZY+fzf+qWUpw6f6k733ISYdVVse7FrXpJZ+mF/8mlu70ncifgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;github_api.png&quot;
+        title=&quot;github_api.png&quot;
+        src=&quot;/static/da545506edff90327411e63575ead324/f058b/github_api.png&quot;
+        srcset=&quot;/static/da545506edff90327411e63575ead324/c26ae/github_api.png 158w,
+/static/da545506edff90327411e63575ead324/6bdcf/github_api.png 315w,
+/static/da545506edff90327411e63575ead324/f058b/github_api.png 630w,
+/static/da545506edff90327411e63575ead324/40601/github_api.png 945w,
+/static/da545506edff90327411e63575ead324/78612/github_api.png 1260w,
+/static/da545506edff90327411e63575ead324/c2d13/github_api.png 2560w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;저는 굳이 postman을 이용했지만 위와 같이 간단한 GET 요청인 경우엔 주소창에 입력해도 무방합니다. POST나 PUT, DELETE의 경우에도 크게 어렵진 않습니다. Personal access Token을 발급받아 Header에 Authorization: ‘token [발급받은 토큰 번호]‘만 넣어주시면 수월하게 돌아갑니다. 하지만 그건 어디까지나 ‘개인’이 사용하는 경우에 해당합니다.&lt;/p&gt;
+&lt;p&gt;저의 경우엔 다른 이용자의 계정 정보 즉, 로그인 동작이 필요했습니다. 그리고 여기서 그 녀석이 등장하죠. CORS… &lt;del&gt;ㅁ나ㅣㅓㅇㄹ ㅏㅣ;ㅁㄴㅇㄹ&lt;/del&gt;&lt;/p&gt;
+&lt;h3&gt;CORS&lt;/h3&gt;
+&lt;p&gt;Cross-Origin Resource Sharing(교차 출처 리소스 공유)는 SOP(Same-Origin Policy)와 짝을 이루는 개념입니다. SOP는 말 그대로 “같은 출처에서만 리소스를 공유할 수 있다”라는 정책인데 웹에서 다른 출처에 있는 리소스를 가져와서 사용하는 것은 흔한 일이죠. 그렇기에 예외 조항을 두기로 합니다. 그 중 하나가 “CORS 정책을 지킨 리소스 요청”입니다.&lt;/p&gt;
+&lt;p&gt;~ 생략(CORS에 대한 자세한 이야기는 다른 글에서 하도록 하겠습니다.) ~&lt;/p&gt;
+&lt;p&gt;CORS 문제의 해결 방법은 &lt;del&gt;제가 알고 있는건&lt;/del&gt; 두 가지입니다. 서버에서 Access-Control-Allow-Origin을 세팅해주거나 proxy를 이용하는 방법이죠. 첫 번째 방법은 제가 Github에 요청해 얻거나 &lt;del&gt;쳐들어가서&lt;/del&gt; &lt;strong&gt;안 됩니다.&lt;/strong&gt; 그러면 자연스레 남는건 proxy서버를 이용하는 방법입니다.&lt;/p&gt;
+&lt;h3&gt;proxy server&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ec4fa9f4541ed21063f16c5848bfd83c/29114/proxy.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.34177215189873%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB1klEQVQoz2MwMDBkAAKm+fMXRpeXVyj+//+fYdOmLQwgGoTvpaUxzHV3t57j5mYP4jOwsTE01NYx9fdPZJg6dZoaUF8ESD9IbtGiJQwMp0+fZWhsbPK/cuXa/9Onz9w4cODgngULFuUCFXEAMWOukZHl9cTEb3dSUv5229u7gjTaaGnzAuXYVq9eu+zatev/Dx8+enDfvv0bJ06cpMcwY8ZMv/PnL/y5d+/By0ePnny5cePW/0WLFh8EauD8v2Y1Q4OVVcTB8PDPRyMjv09yckoHu5KBgXX58pVrz5278B+o7/nTp8//XLp0+f+0aTOSGAoLi8R37ty19u7d+/8vX75658SJU7cXL14yG6iJ/f+e3SADbQ9HRHw/FBHxv8vOzuf/xIkgA9mbm1u8T548/Rho4C+gwRePHj1+d8qUqb4MQFMZoqNj5KdOnd4eFBRkra+vLx8aGsbs7O7OAANtNjYJvfb2SaCwEuHgAItt376TobOzK7K3t69UXFxc1cnJSRLoOwZQwDOCFAIxFxALAzGPoKAgg5qGJkicwVdZmQEqB8IMDebmYAOhXmcDYj4gFgJiZrgEVBIOvLy8GSzs7IHRwokinmNoyLDX05MBGwCZwcPDwwAAbLzYk76ooA0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;proxy.png&quot;
+        title=&quot;proxy.png&quot;
+        src=&quot;/static/ec4fa9f4541ed21063f16c5848bfd83c/f058b/proxy.png&quot;
+        srcset=&quot;/static/ec4fa9f4541ed21063f16c5848bfd83c/c26ae/proxy.png 158w,
+/static/ec4fa9f4541ed21063f16c5848bfd83c/6bdcf/proxy.png 315w,
+/static/ec4fa9f4541ed21063f16c5848bfd83c/f058b/proxy.png 630w,
+/static/ec4fa9f4541ed21063f16c5848bfd83c/40601/proxy.png 945w,
+/static/ec4fa9f4541ed21063f16c5848bfd83c/78612/proxy.png 1260w,
+/static/ec4fa9f4541ed21063f16c5848bfd83c/29114/proxy.png 1920w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;proxy 서버는 중계 서버, 나와 상대방(출처와 출처) 사이에 요청을 받고 전달해주는 서버를 말합니다. 보안을 강화하려 사용하기도 하지만 웹 혹은 브라우저를 속이기 위해 사용하기도 합니다. 저희가 보내는 요청을 마치 CORS 정책을 지킨 것처럼 위장해 브라우저를 속이는 것이죠.(proxy에 관한 이야기도 다른 글에서 자세히 알아보도록 하겠습니다.)&lt;/p&gt;
+&lt;p&gt;proxy 서버를 사용하기 위한 가장 간단한 방법은 &lt;code class=&quot;language-text&quot;&gt;package.json&lt;/code&gt; 있다면 아래와 같이 작성하면 proxy가 동작하게됩니다. 하지만 저의 경우엔 github pages를 이용해 배포를 했기 때문에 이 방법은 되지 않았습니다. 해서 저는 azure의 App service를 이용해 Node 서버를 배포를 하기로 했습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token string&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token string&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token string&quot;&gt;&quot;proxy&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://api.github.com&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;제가 azure에 배포한 proxy 서버의 소스는 이곳(&lt;a href=&quot;https://github.com/wesbin/github-proxy&quot;&gt;https://github.com/wesbin/github-proxy&lt;/a&gt;)에서 보실 수 있습니다. 혹시 보셨다면 아시겠지만 정말 간단합니다. 포인트는 &lt;code class=&quot;language-text&quot;&gt;app.js&lt;/code&gt;에서 사용한 &lt;code class=&quot;language-text&quot;&gt;cors&lt;/code&gt; 미들웨어에 있죠. 아주 간단하게 CORS 요청을 설정할 수 있는 미들웨어입니다. 저의 경우엔 다른 설정 없이 사용했지만 다양한 설정 방법이 있으니 찾아서 사용하시는 것도 좋을 것 같습니다.&lt;/p&gt;
+&lt;h3&gt;완성&lt;/h3&gt;
+&lt;p&gt;그렇게 제 첫 토이 프로젝트인 뭐먹지가 완성되었습니다. 두서없이 쭈욱 적고보니 과연 이 글이 누군가에게 도움이 될 수 있을까 싶네요. ㅠㅠ&lt;/p&gt;
+&lt;p&gt;저의 글재주가 모자른건지, 미루고 미루다 프로젝트가 끝난 2달이나 지난 시점에서 이 글을 쓰고 있어 그 때의 감정이 사라진건지. 프로젝트를 진행하면서 겪었던 고생들이 잘 드러나지 않는 느낌이 있네요.&lt;/p&gt;
+&lt;p&gt;그래도 적어도 저에게는 토이 프로젝트를 하면서 겪었던 고생들이 제 개발 이야기에 큰 도움이 될거라고 생각합니다.&lt;/p&gt;
+&lt;p&gt;만약 이 글을 여기까지 읽어주신 분들이 있다면 그리고 아직 토이 프로젝트를 진행해보지 않으셨다면&lt;/p&gt;
+&lt;p&gt;꼭! 해보시길 바랍니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;대신 계획은 최대한 작게 잡아보세요. 생각보다 더 힘드니까요.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;글 읽어주셔서 감사합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[우분투 패키지 업데이트]]></title><description><![CDATA[안녕하세요. 위성빈입니다. 오늘은 창피한 얘기를 해볼까 합니다. 꽤 시간이 흘렀는데도 생각해보면 정말 가관이네요. 문제의 시작 일단 저는 Ubuntu…]]></description><link>https://wesbin.github.io/좌충우돌_우분투_패키지_업데이트/</link><guid isPermaLink="false">https://wesbin.github.io/좌충우돌_우분투_패키지_업데이트/</guid><pubDate>Sat, 17 Apr 2021 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;안녕하세요. 위성빈입니다. 오늘은 창피한 얘기를 해볼까 합니다. 꽤 시간이 흘렀는데도 생각해보면 정말 가관이네요.&lt;/p&gt;
+&lt;h3&gt;문제의 시작&lt;/h3&gt;
+&lt;p&gt;일단 저는 Ubuntu를 제대로 다루지 못합니다. 제가 어떤 행동을 했을때 따라오는 리스크에 대해서 파악이 되질 않았죠. 그런 상황에서 저는 Ubuntu 패키지를 업데이트 해야했습니다. 생각보다 간단해보였습니다. apt 툴을 이용하면 커맨드 한 줄이면 끝나는 것처럼 보였죠. 언제나 그런 느낌인건 기분 탓이겠지만 이 방식은 제 상황과 맞지 않는다는걸 깨달았습니다.&lt;/p&gt;
+&lt;p&gt;제가 패키지를 업데이트할 서버는 외부망과 연결이 되어 있지 않았습니다. 인터넷에 있는 대부분의 내용은 apt를 이용한 방법은 외부망과의 연결이 필수였죠.&lt;/p&gt;
+&lt;p&gt;지금 생각해보면 여기서 멈춰 물어보거나 보다 깊게 조사를 했어야 했습니다. 모르는 것에 대해 무서움 없이 달려드는게 제 성격의 장점이라고 생각하고 있지만 이번만큼은 그 뒷면이 명백하게 들어났습니다.&lt;/p&gt;
+&lt;p&gt;우분투에 패키지를 설치하기 위한 툴로 apt와 dpkg가 있습니다. dpkg는 apt에 비해 낮은 단계에서 패키지를 관리하고 결과적으로 apt 내부적으로 dpkg를 사용하죠. 그 말인즉슨 dpkg는 제한이 없는 대신 위험도가 높다는 걸 의미했습니다. 하지만 저는 이 시점에서 그 위험에 대해서 눈치를 채지 못하죠.&lt;/p&gt;
+&lt;p&gt;그렇게 저는 dpkg를 이용해 패키지를 설치하기로 하고 Ubuntu 패키지를 &lt;a href=&quot;https://packages.ubuntu.com/&quot;&gt;Ubuntu packages&lt;/a&gt;에서 다운로드 받아 설치하기 시작하죠. 그리고 제가 눈치 채지 못했던 dpkg의 위험성이 드러나게 됩니다. &lt;strong&gt;dpkg는 패키지를 설치할 때 패키지 간의 의존성을 보지 않습니다.&lt;/strong&gt; 이런 사실을 모른채 작업을 진행했던 Ubuntu 서버의 패키지들의 의존성이 꼬이기 시작했고, 기존에 잘 되던 패키지들도 안되기 시작했습니다.&lt;/p&gt;
+&lt;p&gt;결과적으론 서버로의 원격 접속을 도와주던 SSH 명령어가 먹통이 되어버립니다. 직접 서버에 접속해야하는 상황이 펼쳐졌고. ‘망했다’라는 말이 절로 나오더군요.&lt;/p&gt;
+&lt;h3&gt;착오&lt;/h3&gt;
+&lt;p&gt;이 때 제가 생각했던 문제 해결 방법은 두 가지였습니다. 생각없이 설치했던 패키지를 롤백하거나 해당 패키지가 필요한 의존성을 모두 채워주는 것. 저는 롤백 대신 필요한 의존성을 모두 채워주기로 합니다. 시간이 흘러 지금 생각해보면 롤백을 하는게 더 간단한 방법이었을텐데 왜 그런 선택을 했는지 의문이 들긴 합니다. 어쨋든 저는 필요한 패키지를 모두 다운로드 받아 다시 설치를 시작했습니다. 하나의 패키지를 설치하고 다음 패키지를 설치하는 방식으로 말이죠.&lt;/p&gt;
+&lt;p&gt;하지만 이 방식에는 큰 오류가 있었습니다. 우분투 패키지에는 서로가 서로를 의존하는 경우가 있습니다. A가 B를, B가 A를 의존하는 형태죠. 그런 사실을 모른채 설치를 진행하던 어느 시점에 심각한 상황이 발생해버립니다. ls, mount와 같은 아주 기본적인 명령어 조차 안되는 심각한 문제가 생겨버린 겁니다.&lt;/p&gt;
+&lt;p&gt;한번 더 망했습니다.&lt;/p&gt;
+&lt;p&gt;아마도 이 상황까지 오게되면 우분투 설치 디스크를 꽂아 재설치나 복구를 진행하는게 맞을겁니다. 저도 그렇게 생각했고요. 그래도… 저는 그래도 뭔가 있지 않을까 계속 뒤졌습니다. 이때 제가 뭐를 놓쳤고 뭐를 잘못했는지 대부분 알게 되죠. &lt;/p&gt;
+&lt;p&gt;이를테면 이런 사실들입니다. Ubuntu 패키지 업데이트를 위해서 다운로드 받았던 deb 파일은 일종의 압축 파일이고, 그 안에 있는 lib 폴더에 들어가있는 ~.so 파일이 해당 패키지의 내용을 담은 파일. 결국 dpkg로 패키지를 설치한다는 것은 deb 파일의 압출을 풀어 so 파일을 ‘/usr/lib’ 위치에 옮겨두는 것.&lt;/p&gt;
+&lt;p&gt;하지만 그럼 뭐합니까. 할 수 있는게 없는데. 이런 정보들을 얻어갈수록 절망감만 쌓여가더군요.&lt;/p&gt;
+&lt;p&gt;그래도! 제 머리는 아주 열심히 돌아가줬습니다. 끊임없이 ‘없나?’, ‘진짜?‘를 스스로에게 되물으며 손을 놓지 않았습니다. 이때 상황은 ls, mount 등의 명령어가 실행되는 데 필요한 패키지. 이를테면 &lt;del&gt;그 패키지의 이름이 기억나지 않는군요&lt;/del&gt; A의 1.0 버전이 필요했습니다. 이게 설치되어서 기본 명령어들이 동작한다면 다시 패키지를 설치할 수 있게 되는 것이죠. &lt;/p&gt;
+&lt;p&gt;그런 상황에서 저는 필요했던 A 패키지의 1.0 버전은 아니지만 그보다 높은 예를 들면 1.5 버전의 A 패키지가 서버 안에 있는걸 보게 됩니다. 패키지를 설치하기 위해 넣어둔 것이었죠. 그리고 이걸 보자마자 저는 재밌는 생각이 하나 떠오릅니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“dpkg로 설치는 안되. 근데 어차피 deb 파일 안에 있는 so를 내가 수동으로 옮기면 되잖아. 그리고 1.0 버전은 아니지만 상위 버전이니까 비슷하지 않겠어? 애초에 아주 기본적인 명령어니까 더욱 그러지 않을까? so 파일 이름을 1.0 버전으로 바꾸고 해보자.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;라는 식이죠. 그럴 듯 해보이지 않습니까? 적어도 저는 그렇게 생각했습니다. 그리고&lt;/p&gt;
+&lt;p&gt;“이게 돼? 아니… 이게 된다고?”&lt;/p&gt;
+&lt;p&gt;진짜 자리에서 박차고 일어났습니다. 혼자가 아닌지라 내적 환호성 진짜 크게 질렀습니다. 그리곤 심호흡을 하고 침착하게 패키지를 업데이트하면 되겠다고 생각했습니다. 하지만 이전 방식으로는 절대 안 됩니다. 새로운 방법을 찾아야했죠.&lt;/p&gt;
+&lt;h3&gt;해결&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;apt-get install ~~/*.deb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;착오에 빠져 수많은 검색을 하던 때에 찾았던 내용이었습니다. 이렇게 명령을 내리면 apt가 알아서 설치할 deb 파일들의 의존 관계를 파악하며 안전하게 설치를 해준다는 것이었습니다. 일단 한숨. 후…&lt;/p&gt;
+&lt;p&gt;이번에는 된다! 라고 자신있게 명령어를 쳤지만 안 됐습니다. 문제가 터지진 않았습니다. apt가 설치하려면 이거이거 패키지가 필요해라고 친절하게 알려주더라고요. 다시 한숨. 후…&lt;/p&gt;
+&lt;p&gt;보니 제가 모두 다운로드 한다고 했지만 워낙 많은지라 빼먹은게 있었던 것이었죠. 그리고 여기서 부족한 부분을 다시 수작업으로 다운로드 받을 수도 있었지만 툴을 하나 만들기로 합니다. &lt;/p&gt;
+&lt;p&gt;이름하여 &lt;a href=&quot;https://github.com/wesbin/ubuntu-package-scraping&quot;&gt;우분투 패키지 스크래핑&lt;/a&gt;. &lt;/p&gt;
+&lt;p&gt;패키지 설치에 필요한 의존 패키지들을 모두 일괄로 다운로드하는 툴입니다. 툴을 만들고 패키지를 다운로드 받았습니다. 다운받은 패키지를 서버에 업로드하려니 또 문제가 있었습니다.&lt;/p&gt;
+&lt;p&gt;SSH는 되고 있었는데 SFTP 연결이 안 되었습니다. 이전과 마찬가지로 패키지 의존 문제였죠. mount 명령어가 되니 서버에 직접 접근해도 됐었으나 그러기 위해선 인프라팀을 거쳐 가야 했습니다. 그래서 일단은 다시 고민에 빠지죠. 뒤가 있으니 정말 마음편한 고민이었습니다. 그래서인가 금방 해결 방법을 찾을 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;SSH만 연결되어 있으면 파일을 옮길 수 있는 scp 명령어라는게 있었습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;scp &amp;lt;source_path&amp;gt;&amp;lt;username&amp;gt;@&amp;lt;ip&amp;gt;:&amp;lt;dest_path&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그렇게 scp를 이용해 파일을 옮기고 이 사단은 대단원을 맞이하게 됩니다. &lt;/p&gt;
+&lt;p&gt;apt-get install ~~/*.deb&lt;/p&gt;
+&lt;p&gt;끝!&lt;/p&gt;
+&lt;h3&gt;마치며&lt;/h3&gt;
+&lt;p&gt;전체로 보자면 이틀에 걸쳐 일어난 일이었습니다만 두 번째 날은 패키지 다운로드 툴을 만들기 위한 시간이었고, 사건들은 모두 첫째 날 벌어진 일이었죠. 정말 지옥 같은 하루였습니다. 그래도 해결이 되었으니 불행 중 다행이라고 해야 할지… 어쨋든 저런 임기응변이 통했던 건 분명 행운이겠죠.&lt;/p&gt;
+&lt;p&gt;이 사건이 있고 나서는 서버에 대해 어떤 작업을 하던 한 번 더 찾아보고, 한 번 더 확인하는 습관이 생겼습니다. 이 글을 통해 여러분들은 서버를 다루다 이 지경이 되는 일이 없으면 하네요.&lt;/p&gt;
+&lt;p&gt;그럼 마칩니다. 글을 읽어주셔서 감사합니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gradle에서 Runnable.jar 만들기]]></title><description><![CDATA[Gradle을 이용해서 Runnable.jar를 만들기 위해선 설정이 필요합니다. 설정 없이 jar를 만들어보면 처음에는 Manifest가 없다고 할 겁니다! 
+그러면 아래와 같이 build.gradle에 코드를 추가해주세요. attributes…]]></description><link>https://wesbin.github.io/Gradle에서_Runnable.jar_만들기/</link><guid isPermaLink="false">https://wesbin.github.io/Gradle에서_Runnable.jar_만들기/</guid><pubDate>Wed, 17 Mar 2021 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;Gradle을 이용해서 Runnable.jar를 만들기 위해선 설정이 필요합니다. 설정 없이 jar를 만들어보면 처음에는 Manifest가 없다고 할 겁니다!
+그러면 아래와 같이 build.gradle에 코드를 추가해주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;mainClassName = &amp;#39;wesbin.toy.blog&amp;#39;
+version = &amp;#39;1.0&amp;#39;
+
+jar {
+    manifest {
+        attributes &amp;#39;Version&amp;#39;: version, &amp;#39;Main-Class&amp;#39;: mainClassName
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;attributes 중 Version은 없어도 됩니다. Main-Class만 입력하면 동작해요.
+mainClassName은 내가 jar를 실행할 때 실행하고 싶은 Class를 지정해주면 됩니다.
+아래의 코드를 참고하시면 금방 어떻게 작성해 넣어야 하는지 아실 거에요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;package wesbin.tory
+
+import ...
+
+public class Blog {
+
+~~
+    
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이렇게만 해도 jar를 만들어 실행하면 되는 분이 계실 겁니다.
+하지만 자기가 dependencies를 추가하여 코드를 작성하셨다면 ClassNotFoundException이 반기지 않을까 생각합니다.
+&lt;del&gt;저도 그랬거든요. 젠장. 한 번에 되는 꼴이 없죠. 역시.&lt;/del&gt; 만든 jar를 열어보면 작성한 코드만 있을 뿐 dependencies는 어디에도 없죠. 그러면 역시 검색이죠.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;jar {
+    manifest {
+        attributes &amp;#39;Version&amp;#39;: version, &amp;#39;Main-Class&amp;#39;: mainClassName
+    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;하지만 이번에도 역시! 안됩니다. 이유는 dependencies를 추가할 때 사용한 방식이 compile을 사용했는가 혹은 implementation을 사용했는가입니다.
+implementation을 compile로 바꾸고 위의 코드를 사용하면 jar에 dependencies가 제대로 추가된 모습을 볼 수 있죠.&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;&lt;strong&gt;하지만!! 자존심이 허락하지 않습니다!! implementation!!&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;하하… 아닙니다. 조금 더 그럴듯한 이유가 있습니다. compile은 gradle 3.0버전부터 deprecated 되었습니다.
+그리고 gradle 7.0버전에서는 삭제될 예정입니다(길게도 살아남았네요). 아래는 Gradle 6.8.1 User Manual에서 가져온 사진입니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dd75e04ac4d22de21289b1489dc72154/5e3a3/Gradle_6.8.1_The_Java_Library_plugin_configurations.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 34.177215189873415%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAABjElEQVQY03VPO0/CUBi9i4OJv8Ff4MrkPzBGSVxMjH/AwVkH4+rCpJODOhhfQC2xQaMIiI+0UBDCBcobCkgLllIpj77utZHZk5Mv50vOl+8cYCFLQ+rO+4LzCmwSc8sX4AxuFUahFR844pwYY8PSDaRbyLS1PU1k2JyuAP8Byg++jOu+ekgUD2p6rC7lfbUDuk6aOsL/AyS/qZhIsE2qoiTwCOvVgf71o5SaWMWtYS5YOWU7t7Rww/XDtjunhBjhhm67M3IAYQtsh+fXvTNL58AFl8epSvz4pHhNli+ISZw7TGw4r8EmObt6CfbfFu3j3RfHmgesucEe7dDRBEh6TUVNXkqppjgNgyaaJiujH1XSBNnk6/2sZPDlbrYnSd+DandYEAZZA8sYYWB3ipY7VJS7oyHFQoJJfhR5C+Mx32qHGf7ZJt0IMMNknu8pJA390TzFcP5Y7hGWgIGsUJH3sGlfkiPjOW8sw9QE+79WaYhPkXbwVQy+iYGIloCN/pD45MhE9jae8bKQSpd/AYdqVtOMrfhZAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Gradle 6.8.1 The Java Library plugin configurations&quot;
+        title=&quot;Gradle 6.8.1 The Java Library plugin configurations&quot;
+        src=&quot;/static/dd75e04ac4d22de21289b1489dc72154/f058b/Gradle_6.8.1_The_Java_Library_plugin_configurations.png&quot;
+        srcset=&quot;/static/dd75e04ac4d22de21289b1489dc72154/c26ae/Gradle_6.8.1_The_Java_Library_plugin_configurations.png 158w,
+/static/dd75e04ac4d22de21289b1489dc72154/6bdcf/Gradle_6.8.1_The_Java_Library_plugin_configurations.png 315w,
+/static/dd75e04ac4d22de21289b1489dc72154/f058b/Gradle_6.8.1_The_Java_Library_plugin_configurations.png 630w,
+/static/dd75e04ac4d22de21289b1489dc72154/5e3a3/Gradle_6.8.1_The_Java_Library_plugin_configurations.png 763w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;주목할 부분은 implementation과 compileClasspath.
+그리고 Stack Overflow의 답변 중 휠을 내려 조금 아래에 있는 답변에서 찾은 코드.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;jar {
+    manifest {
+        attributes &amp;#39;Version&amp;#39;: version, &amp;#39;Main-Class&amp;#39;: mainClassName
+    }
+    from {
+        configurations.compileClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이러면 완벽합니다. &lt;strong&gt;dependencies를 추가할 때 사용한 방식이 complie이면 complie, implementation이면 compileClasspath를 사용하면 된다.&lt;/strong&gt; 끝!&lt;/p&gt;</content:encoded></item></channel></rss>
